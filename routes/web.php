@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('list', ['as' => 'describe.list', 'uses' => 'DescribeController@list']);
 Route::resource('describe', 'DescribeController');
 Route::resource('user', 'UserController');
 

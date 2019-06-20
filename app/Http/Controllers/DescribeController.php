@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 class DescribeController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -23,7 +24,7 @@ class DescribeController extends Controller
      */
     public function create()
     {
-        //
+        return view('user.describe.create');
     }
 
     /**
