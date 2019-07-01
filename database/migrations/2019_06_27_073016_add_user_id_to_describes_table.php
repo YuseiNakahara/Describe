@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLikesTable extends Migration
+class AddUserIdToDescribesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateLikesTable extends Migration
      */
     public function up()
     {
-        Schema::create('likes', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('user_id')->nullable();
-            $table->integer('like_id');
-            $table->timestamps();
-            $table->softDeletes();
+        Schema::table('describes', function (Blueprint $table) {
+            // $table->integer('user_id');
         });
     }
 
@@ -29,6 +25,8 @@ class CreateLikesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('likes');
+        Schema::table('describes', function (Blueprint $table) {
+            // $table->dropColumn('user_id');
+        });
     }
 }

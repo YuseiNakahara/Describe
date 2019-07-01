@@ -16,13 +16,13 @@ class CommentsTableSeeder extends Seeder
         DB::table('comments')->insert([
             [
                 'user_id'     => 1,
-                'question_id' => 1,
+                'describe_id' => 1,
                 'comment'     => 'コメント',
                 'created_at'  => Carbon::create('2019','6','18'),
             ],
             [
                 'user_id'     => 1,
-                'question_id' => 1,
+                'describe_id' => 1,
                 'comment'     => 'コメント',
                 'created_at'  => Carbon::create('2019','6','18'),
             ]

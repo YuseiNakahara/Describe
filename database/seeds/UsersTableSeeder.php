@@ -17,7 +17,7 @@ class UsersTableSeeder extends Seeder
             [
                 'name'          => '中原 優成',
                 'user_id'       => '123456789',
-                'mail'          => 'yusei1225y@gmail.com',
+                'email'          => 'yusei1225y@gmail.com',
                 'avatar'        => null,
                 'created_at'    => Carbon::create(2019, 6, 18),
             ]

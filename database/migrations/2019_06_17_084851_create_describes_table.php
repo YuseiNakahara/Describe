@@ -15,8 +15,9 @@ class CreateDescribesTable extends Migration
     {
         Schema::create('describes', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
-            $table->integer('time_category_id');
+            $table->integer('user_id')->nullable();
+            $table->string('url');
+            $table->string('image_url');
             $table->string('title');
             $table->string('content');
             $table->timestamps();

@@ -11,7 +11,9 @@
 |
 */
 
-Route::get('list', ['as' => 'describe.list', 'uses' => 'DescribeController@list']);
+Route::get('upload', ['as' => 'describe.upload', 'uses' => 'DescribeController@upload']);
+Route::get('confirm', ['as' => 'describe.confirm', 'uses' => 'DescribeController@confirm']);
+Route::get('mypage', ['as' => 'describe.mypage', 'uses' => 'DescribeController@mypage']);Route::post('describe/comment', ['as' => 'describe.comment', 'uses' => 'DescribeController@comment']);
 Route::resource('describe', 'DescribeController');
 Route::resource('user', 'UserController');
 
