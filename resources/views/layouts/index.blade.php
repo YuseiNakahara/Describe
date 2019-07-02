@@ -12,9 +12,10 @@
       href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
       rel="stylesheet"
     >
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script>
   </head>
   <body>
-      <div class="header">
+      <header class="header list">
           <div class="navbar navbar-inverse navbar-static-top">
               <div class="navbar-header">
                   <a
@@ -23,20 +24,23 @@
                   >Describe</a>
                   <a href="" class="fas fa-crow fa-3x"></a>
               </div>
-              <input
-                type="text"
-                class="search-text"
-                placeholder="SearchWords..."></input>
+                {!! Form::input('text', 'searchword', empty($inputs['searchword']) ? null : $inputs['searchword'], ['class' => 'search-text', 'placeholder' => 'Search words...']) !!}
               <div class="icon-search">
                   <a href="" class="fas fa-search fa-2x"><a>
               </div>
-              <p class="openBtn"><i class="fas fa-chevron-down fa-2x"></i></p>
-              <p class="textArea">Logout</p>
+              <ul>
+                <li class="navTitle"><i class="fas fa-chevron-down fa-2x"></i>
+                  <ul class="subList">
+                    <li><a href="{{ route('logout') }}">LOGOUT</a></li>
+                  </ul>
+                </li>
+              </ul>
           </div>
-      </div>
-  </body>
-      @yield('content')
-    <footer>
+      </header>
+      <main>
+        @yield('content')
+      </main>
+      <footer>
       <div class="fotter">
           <div class="icon-tag">
               <div class="icon">
@@ -62,5 +66,18 @@
               </div>
           </div>
       </div>
+
+      <script type="text/javascript">
+        $(".navTitle").click(function(){
+          var $subList = $(this).children('ul');
+            if($subList.css('display') == 'none'){
+              $subList.slideDown(500);
+            }else{
+              $subList.slideUp(500);
+            }
+        });
+      </script>
+
     </footer>
+  </body>
 </html>

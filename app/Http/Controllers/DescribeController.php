@@ -85,7 +85,7 @@ class DescribeController extends Controller
             return redirect()->route('describe.index');
         }
 
-        return 'nothing';
+        return 'Nothing';
     }
 
     /**
@@ -136,7 +136,8 @@ class DescribeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->describe->find($id)->delete();
+        return redirect()->route('describe.index');
     }
 
     public function confirm(Describe1Request $request)

@@ -26,7 +26,7 @@ class Describe1Request extends FormRequest
         return [
             'title'       => 'required',
             'content'     => 'required',
-            'url'         => 'required',
+            'url'         => 'url',
         ];
     }
 
@@ -35,7 +35,7 @@ class Describe1Request extends FormRequest
         return [
             'title.required' => '入力必須の項目です',
             'content.required'        => '入力必須の項目です',
-            'url.required'   => '入力必須の項目です',
+            'url.required'   => 'URL形式で入力してください',
         ];
     }
 }

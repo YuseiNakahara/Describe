@@ -11,7 +11,9 @@
               @foreach ($describes as $describe)
                 <div class="form-main">
                   <img src="" class="avatar-img">
-                  <a class="postImage" href=""><img width="240" height="170" src="{{ $describe['image_url'] }}"></a>
+                  <a class="postImage" href="{{ $describe['image_url'] }}">
+                    <img width="240" height="200" src="{{ $describe['image_url'] }}">
+                  </a>
                   <div class="form-one">
                     <p class="form-group">
                       <a class="title-url" href="{{$describe->url}}">{{ $describe->title }}</a>

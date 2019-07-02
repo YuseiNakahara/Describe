@@ -47,8 +47,7 @@ class Describe extends Model
 
     public function searchingWord($inputs)
     {
-        return $this->filterEqual('tag_category_id', $inputs['tag_category_id'])
-                    ->filterLike('title', $inputs['searchword'])
+        return $this->filterLike('title', $inputs['searchword'])
                     ->orderby('created_at', 'desc')
                     ->get();
     }

@@ -78,6 +78,8 @@ hr {
   padding: 0;
 }
 
+/* Header */
+
 .header {
   position: fixed;
   top: 0;
@@ -96,6 +98,11 @@ hr {
   top: 0;
   position: fixed;
   width: 100%;
+}
+
+.check {
+  margin-top: 10px;
+  float: right;
 }
 
 /* カラムズレ防止 */
@@ -314,7 +321,7 @@ bt {
 /* index */
 .form-main {
   margin: 10px 0 40px 0;
-  padding: 0 0 20px;
+  padding: 0 0 40px;
   border-bottom: 1px solid #C0C0C0;
 }
 
@@ -360,6 +367,10 @@ bt {
   display: inline-block;
   margin-left: 100px;
   margin-right: 30px;
+}
+
+.openBtn {
+  font-size: 18px;
 }
 
 /* CREATE */
@@ -460,6 +471,12 @@ textarea {
   border-bottom: 1px solid #C0C0C0;
 }
 
+.btn-danger {
+  background-color: #7b7b7b;
+  margin: 10px 0;
+  float: right;
+}
+
 .create-date {
   font-size: 15px;
 }
@@ -490,7 +507,48 @@ font-size: 12px;
   border-top: 15px solid #f5f5f5;
 }
 
+/* バリデーション */
 .has-error {
   color: red;
   font-weight: bold;
+}
+
+/* ドロップダウンメニュー */
+.fa-chevron-down {
+  color: #424244;
+}
+
+.fa-chevron-down:hover {
+  color: #7b7b7b;
+}
+
+
+ul{
+  list-style: none;
+  display: block;
+  justify-content:space-around;
+  background:#5ebaba;
+  width:100px;
+  margin-right:30px;
+  padding:0;
+}
+.navTitle{
+  margin-right: 50px;
+  font-size: 16px;
+  position: relative;
+}
+.subList{
+  position: absolute;
+  background-color: #5ebaba;
+  z-index: 100;
+  display: none;
+}
+
+/* loginPage */
+.col-md-8 {
+  margin: 0 auto;
+}
+
+.ml-auto {
+  background-color: white;
 }
