@@ -12,7 +12,9 @@
                 <div class="form-main">
                   <img src="" class="avatar-img">
                   <a class="postImage" href="{{ $describe['image_url'] }}">
-                    <img width="240" height="200" src="{{ $describe['image_url'] }}">
+                    <div class="imgbox">
+                      <img width="100%" height="200" src="{{ $describe['image_url'] }}">
+                    </div>
                   </a>
                   <div class="form-one">
                     <p class="form-group">
@@ -29,13 +31,19 @@
                     </div>
                     <div class="form-group">
                       <i class="far fa-comment-alt"></i>
-                      <span class="point-color">{{ count($describe->comment) }}</span>
+                      <span class="point-color">{{ count($describe->comments) }}</span>
+                      <i class="far fa-heart"></i>
+                      <span class="pointer">{{ count($describe->hearts) }}</span>
+                    </div>
+                    <div class="user-name">
+                      <i class="fas fa-user-alt"></i>
+                      {{ Auth::user()->name }}
                     </div>
                   </div>
                   <div class="show">
                     <a
                       class="btn btn-primary"
-                      href="{{ route('describe.show', $describe->id) }}">
+                      href="describe/{{ $describe->id }}">
                       詳細
                     </a>
                   </div>

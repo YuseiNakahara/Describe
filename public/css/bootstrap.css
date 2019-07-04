@@ -12,7 +12,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -webkit-overflow-scrolling: touch;
   width: 100%;
-  height: 1500px;
+  height: 100%;
   min-width:600px;
 }
 
@@ -93,7 +93,9 @@ hr {
 }
 
 .navbar-inverse {
-  background-color: #5ebaba;
+  background: -moz-linear-gradient(left, #7ac4c4, rgb(4, 95, 180));
+  background: -webkit-linear-gradient(left, #59b9b9,rgb(4, 95, 180));
+  background: linear-gradient(to right, #8fe7e7, rgb(10, 101, 185));
   border-color: #d2d2d8;
   top: 0;
   position: fixed;
@@ -104,13 +106,6 @@ hr {
   margin-top: 10px;
   float: right;
 }
-
-/* カラムズレ防止 */
-.navbar-left {
-  width: 50px;
-  height: 150px;
-}
-
 
 .navbar-inverse .navbar-nav>li>a:hover {
   color: #222222;
@@ -313,8 +308,10 @@ bt {
   color: #999;
 }
 
+/* html */
+
 .main {
-  margin-left: 130px;
+  margin-left: 85px;
   margin-top: 100px;
 }
 
@@ -340,6 +337,12 @@ bt {
   background-color: #7b7b7b;
 }
 
+.btn-primary:hover {
+  background: -moz-linear-gradient(left, #7ac4c4, rgb(4, 95, 180));
+  background: -webkit-linear-gradient(left, #59b9b9,rgb(4, 95, 180));
+  background: linear-gradient(to right, #8fe7e7, rgb(10, 101, 185));
+}
+
 .show {
   position: relative;
   bottom: 70px;
@@ -352,9 +355,15 @@ bt {
   font-weight: bold;
 }
 
+.fa-heart:before {
+  margin-left: 5px;
+}
+
 /* fotter */
 .fotter {
-  background: #5ebaba;
+  background: -moz-linear-gradient(left, #7ac4c4, rgb(4, 95, 180));
+  background: -webkit-linear-gradient(left, #59b9b9,rgb(4, 95, 180));
+  background: linear-gradient(to right, #8fe7e7, rgb(10, 101, 185));
   width: 100%;
   color: #222222;
   position: fixed;
@@ -392,6 +401,12 @@ bt {
   margin-top: 10px;
   background-color: #7b7b7b;
   float: right;
+}
+
+.btn-success:hover {
+  background: -moz-linear-gradient(left, #92e981, rgb(4, 180, 77));
+  background: -webkit-linear-gradient(left, #92e981, rgb(56, 179, 107));
+  background: linear-gradient(to right, #92e981, rgb(4, 180, 77));
 }
 
 textarea {
@@ -477,8 +492,22 @@ textarea {
   float: right;
 }
 
+.btn-danger:hover {
+  background: -moz-linear-gradient(left, #d1891d, rgb(182, 18, 18));
+  background: -webkit-linear-gradient(left,  #d1c51d,rgb(182, 18, 18));
+  background: linear-gradient(to right,  #d1891d, rgb(182, 18, 18));
+}
+
 .create-date {
   font-size: 15px;
+}
+
+.comment {
+  margin-top: 50px;
+}
+
+.comment-wrap {
+  margin: 50px 20px 0 20px;
 }
 
 .comment-body {
@@ -489,22 +518,39 @@ font-size: 12px;
 }
 
 .comment-list {
-  margin-top: 50px;
   position: relative;
   padding: 10px;
   background-color: #f5f5f5;
   border-radius: 10px;
   font-size: 12px;
+  width: 450px;
+  margin-left: 100px;
 }
 
 .comment-list::before {
   content: "";
   position: absolute;
-  top: 100%;
-  left: 15%;
-  margin-left: -15px;
-  border: 15px solid transparent;
-  border-top: 15px solid #f5f5f5;
+  top: 50%;
+  left: -23px;
+  margin-top: -12px;
+  border: 8px solid transparent;
+  border-right: 20px solid #f5f5f5;
+}
+
+.tab {
+  position: absolute;
+  display: none;
+}
+
+.fa-user-alt {
+  float: left;
+  margin-top: 10px;
+}
+
+.fa-ellipsis-h {
+  float: right;
+  margin-right: 10px;
+  color: #7b7b7b;
 }
 
 /* バリデーション */
@@ -527,21 +573,23 @@ ul{
   list-style: none;
   display: block;
   justify-content:space-around;
-  background:#5ebaba;
-  width:100px;
   margin-right:30px;
   padding:0;
 }
 .navTitle{
-  margin-right: 50px;
   font-size: 16px;
   position: relative;
 }
 .subList{
   position: absolute;
-  background-color: #5ebaba;
+  opacity: 0.5;
   z-index: 100;
   display: none;
+}
+
+.logout {
+  color: white;
+  font-weight: bold;
 }
 
 /* loginPage */
@@ -552,3 +600,8 @@ ul{
 .ml-auto {
   background-color: white;
 }
+
+/* Script */
+/* .modal {
+  display: none;
+} */

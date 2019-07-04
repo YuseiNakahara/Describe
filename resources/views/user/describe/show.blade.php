@@ -1,5 +1,6 @@
 @extends ('layouts.index')
 @section ('content')
+@include('user.describe._script')
 
 <h1 class="brand-header">投稿詳細</h1>
 <div class="main-wrap">
@@ -13,7 +14,7 @@
             <button class="btn btn-danger" type="submit">
                 <i class="fa fa-trash-o" aria-hidden="true">削除</i>
             </button>
-          {!! Form::close() !!}
+            {!! Form::close() !!}
         </td>
       </div>
       <p class="create-date">{{ $describe->created_at }}</p>
@@ -30,6 +31,10 @@
             <td class='td-text'>{{ $describe->content }}</td>
           </tr>
           <tr>
+            <th class="table-column">サイト画像</th>
+            <td class='td-text'>{{ $describe->image_url }}</td>
+          </tr>
+          <tr>
             <th class="table-column">サイトURL</th>
             <td class='td-text'>{{ $describe->url }}</td>
           </tr>
@@ -41,14 +46,22 @@
     </div>
   </div>
   <div class="comment">
-    @foreach($describe as $comment)
-        <div class="comment-list">
-          {{ $comment }}
+    @foreach($describe->comments as $comment)
+        <div class="comment-wrap">
+            <i class="fas fa-user-alt">
+                {{ Auth::user()->name }}
+            </i>
+            <div class="comment-list">
+                {{ $comment->comment }}
+                <i class="fas fa-ellipsis-h fa-2x">
+                </i>
+            </div>
         </div>
     @endforeach
-  </div>
   <div class="comment-box">
-    {!! Form::open(['route' => 'describe.comment', $describe->id, 'method' => 'POST']) !!}
+    {!! Form::open(['route' => 'describe.comment', $describe->id, 'method' => 'GET']) !!}
+    {!! Form::input('hidden', 'user_id', Auth::id()) !!}
+    {!! Form::input('hidden', 'describe_id', $describe->id) !!}
       <div class="comment-title">
         <img src="" class="avatar-img"><p>コメントの投稿</p>
       </div>

@@ -63,5 +63,15 @@ class Describe extends Model
         ]);
     }
 
+        public function createNotImage($inputs, $notImage)
+        {
+            $this->create([
+                'user_id' => $inputs['user_id'],
+                'title' => $inputs['title'],
+                'content' => $inputs['content'],
+                'url' => $inputs['url'],
+                'image_url' => $notImage
+            ]);
+        }
 }
 

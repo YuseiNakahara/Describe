@@ -34,7 +34,7 @@ class DescribeController extends Controller
      */
     public function index(Request $request)
     {
-        $describes = $this->describe->all();
+        $describes = $this->describe->orderBy('created_at', 'desc')->get();
         // dd($describes);
 
         return view('user.describe.index',
@@ -62,7 +62,6 @@ class DescribeController extends Controller
     public function store(Request $request)
     {
         $inputs = $request->all();
-        // $this->describe->create($inputs);
         $client = new Client();
         $crawler = $client->request('GET', $inputs['url']);
         // dd($crawler);
@@ -85,7 +84,9 @@ class DescribeController extends Controller
             return redirect()->route('describe.index');
         }
 
-        return 'Nothing';
+        $notImage = asset('public/image/notimage.jpg', true);
+        $this->describe->createNotImage($inputs, $notImage);
+        return redirect()->route('describe.index');
     }
 
     /**
@@ -97,6 +98,7 @@ class DescribeController extends Controller
     public function show($id)
     {
         $describe = $this->describe->find($id);
+        // dd($describe);
         $comments = $describe->comments->all();
         // dd($comments);
         return view('user.describe.show', compact('describe', 'comments'));
@@ -177,7 +179,14 @@ class DescribeController extends Controller
     public function comment(CommentRequest $request)
     {
         $inputs = $request->all();
+        // dd($inputs);
         $this->comment->create($inputs);
+        return redirect()->back();
+    }
+
+    public function deletecomment($id)
+    {
+        $this->comment->find($id)->delete();
         return redirect()->back();
     }
 }

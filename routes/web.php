@@ -11,12 +11,17 @@
 |
 */
 
+Route::get('describe/comment/delete', ['as' => 'describe.deletecomment', 'uses' => 'DescribeController@deletecomment']);
 Route::get('upload', ['as' => 'describe.upload', 'uses' => 'DescribeController@upload']);
 Route::get('confirm', ['as' => 'describe.confirm', 'uses' => 'DescribeController@confirm']);
-Route::get('mypage', ['as' => 'describe.mypage', 'uses' => 'DescribeController@mypage']);Route::post('describe/comment', ['as' => 'describe.comment', 'uses' => 'DescribeController@comment']);
+Route::get('mypage', ['as' => 'describe.mypage', 'uses' => 'DescribeController@mypage']);
+Route::get('describe/comment', ['as' => 'describe.comment', 'uses' => 'DescribeController@comment']);
 Route::resource('describe', 'DescribeController');
 Route::resource('user', 'UserController');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::post('logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);

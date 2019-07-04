@@ -13,6 +13,7 @@
       rel="stylesheet"
     >
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script>
+    @include('user.describe._script')
   </head>
   <body>
       <header class="header list">
@@ -31,7 +32,7 @@
               <ul>
                 <li class="navTitle"><i class="fas fa-chevron-down fa-2x"></i>
                   <ul class="subList">
-                    <li><a href="{{ route('logout') }}">LOGOUT</a></li>
+                    <li><a class="logout" href="{{ route('logout') }}">LOGOUT</a></li>
                   </ul>
                 </li>
               </ul>
