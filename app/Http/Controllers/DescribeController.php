@@ -12,6 +12,7 @@ use App\Http\Requests\User\CommentRequest;
 use App\Http\Controllers\API\ScrapeController;
 use Goutte\Client;
 use App\Http\Requests\User\Describe1Request;
+use Illuminate\Support\Facades\Auth;
 
 class DescribeController extends Controller
 {

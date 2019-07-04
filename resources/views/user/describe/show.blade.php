@@ -53,8 +53,24 @@
             </i>
             <div class="comment-list">
                 {{ $comment->comment }}
-                <i class="fas fa-ellipsis-h fa-2x">
-                </i>
+                @if(Auth::id() === $comment->user_id)
+                    <i id="btn_open" class="fas fa-ellipsis-h fa-2x">
+                        <div id="modal">
+                            <div id="modal_content">
+                                {!! Form::open(['route' => ['describe.deletecomment', $comment->id], 'method' => 'DELETE']) !!}
+                                    <p>{{ $comment->comment }}
+                                    <button class="btn_close" href="">削除</button></p>
+                                {!! Form::close() !!}
+                            </div>
+                        </div>
+                    </i>
+                @else
+                        <div id="modal">
+                            <div id="modal_content">
+                                <p>{{ $comment->comment }}</p>
+                            </div>
+                        </div>
+                @endif
             </div>
         </div>
     @endforeach
@@ -68,14 +84,12 @@
       <div class="comment-body">
         {!! Form::textarea('comment', null, ['class' => 'form-control', 'placeholder' => 'Please comment...']) !!}
         <span class="help-block"></span>
-      </div>
-      <div class="comment-bottom">
-        <button type="submit" class="btn btn-success">
-            <i class="far fa-comments"></i>
-        </button>
-      </div>
+        <div class="comment-bottom">
+            <button type="submit" class="btn btn-success">
+                <i class="far fa-comments"></i>
+            </button>
+        </div>
     {!! Form::close() !!}
   </div>
-</div>
 @endsection
 

@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('describe/comment/delete', ['as' => 'describe.deletecomment', 'uses' => 'DescribeController@deletecomment']);
+Route::delete('describe/comment/{id}', ['as' => 'describe.deletecomment', 'uses' => 'DescribeController@deletecomment']);
 Route::get('upload', ['as' => 'describe.upload', 'uses' => 'DescribeController@upload']);
 Route::get('confirm', ['as' => 'describe.confirm', 'uses' => 'DescribeController@confirm']);
 Route::get('mypage', ['as' => 'describe.mypage', 'uses' => 'DescribeController@mypage']);

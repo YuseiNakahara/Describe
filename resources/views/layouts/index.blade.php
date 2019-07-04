@@ -13,6 +13,9 @@
       rel="stylesheet"
     >
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="modal.js"></script>
+    <link rel="stylesheet" href="modal.css">
     @include('user.describe._script')
   </head>
   <body>
@@ -67,18 +70,6 @@
               </div>
           </div>
       </div>
-
-      <script type="text/javascript">
-        $(".navTitle").click(function(){
-          var $subList = $(this).children('ul');
-            if($subList.css('display') == 'none'){
-              $subList.slideDown(500);
-            }else{
-              $subList.slideUp(500);
-            }
-        });
-      </script>
-
     </footer>
   </body>
 </html>

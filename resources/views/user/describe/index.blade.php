@@ -37,7 +37,7 @@
                     </div>
                     <div class="user-name">
                       <i class="fas fa-user-alt"></i>
-                      {{ Auth::user()->name }}
+                      <p class="user">{{ Auth::user()->name }}</p>
                     </div>
                   </div>
                   <div class="show">
