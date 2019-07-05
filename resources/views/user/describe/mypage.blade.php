@@ -5,6 +5,8 @@
   <div class="box">
     <div class="main">
       <h2 class="brand-header">MyPage</h2>
+      <i class="fas fa-user-alt"></i>
+      <p class="user">{{ Auth::user()->name }}</p>
         <div class="container">
           {!! Form::open(['route' => 'describe.index', 'method' => 'GET']) !!}
             <article class="Item_content">
@@ -35,10 +37,10 @@
                       <i class="far fa-heart"></i>
                       <span class="pointer">{{ count($describe->hearts) }}</span>
                     </div>
-                    <div class="show">
+                    <div class="edit">
                         <a
                         class="btn btn-success"
-                        href="route('describe.edit', $describe->id)">
+                        href="{{ route('describe.edit', $describe->id) }}">
                         編集
                         </a>
                     </div>

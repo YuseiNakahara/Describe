@@ -26,10 +26,11 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   font-size: 35px;
-  margin-top: 30px;
+  margin-top: 100px;
+  margin-left: 100px;
   margin-bottom: 30px;
+  font-size: 1.8rem;
 }
-
 
 /* Paragraph & Typographic */
 
@@ -397,7 +398,7 @@ html {
   margin:0 auto;
 }
 .create-header  {
-  margin: 100px 0 0 150px;
+  margin: 100px 0 0 100px;
 }
 
 .btn-success {
@@ -413,13 +414,13 @@ html {
 }
 
 textarea {
-  border: 2px solid #7b7b7b;
+  border: 2px solid #ced4da;
   border-radius: 5px;
 }
 
 
 .form {
-  border: 2px solid #7b7b7b;
+  border: 2px solid #ced4da;
   border-radius: 5px;
 }
 
@@ -584,10 +585,12 @@ ul{
   margin-right:30px;
   padding:0;
 }
+
 .navTitle{
   font-size: 16px;
   position: relative;
 }
+
 .subList{
   position: absolute;
   opacity: 0.5;
@@ -645,4 +648,19 @@ ul{
   background: -moz-linear-gradient(left, #d1891d, rgb(182, 18, 18));
   background: -webkit-linear-gradient(left,  #d1c51d,rgb(182, 18, 18));
   background: linear-gradient(to right,  #d1891d, rgb(182, 18, 18));
+}
+
+/* MyPage */
+.edit {
+  position: relative;
+  bottom: 70px;
+  text-align: right;
+  margin-left: 300px;
+  margin-right: 50px;
+  float:right;
+}
+
+/* edit */
+.form-control {
+  border: 2px solid #ced4da;
 }

@@ -33,11 +33,14 @@
                   <a href="" class="fas fa-search fa-2x"><a>
               </div>
               <ul>
-                <li class="navTitle"><i class="fas fa-chevron-down fa-2x"></i>
-                  <ul class="subList">
-                    <li><a class="logout" href="{{ route('logout') }}">LOGOUT</a></li>
-                  </ul>
-                </li>
+                {!! Form::open(['route' => 'logout', Auth::id(), 'method' => 'POST']) !!}
+                {!! Form::input('hidden', 'user_id', Auth::id()) !!}
+                  <li class="navTitle"><i class="fas fa-chevron-down fa-2x"></i>
+                    <ul class="subList">
+                      <li><a class="logout" href="{{ route('logout') }}">LOGOUT</a></li>
+                    </ul>
+                  </li>
+                {!! Form::close() !!}
               </ul>
           </div>
       </header>
@@ -70,6 +73,16 @@
               </div>
           </div>
       </div>
+      <script type="text/javascript">
+        $(".navTitle").click(function(){
+          var $subList = $(this).children('ul');
+            if($subList.css('display') == 'none'){
+              $subList.slideDown(500);
+            }else{
+              $subList.slideUp(500);
+            }
+        });
+      </script>
     </footer>
   </body>
 </html>

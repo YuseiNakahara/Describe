@@ -7,7 +7,6 @@ use App\Models\Describe;
 use App\Models\Comment;
 use JD\Cloudder\Facades\Cloudder;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\User\DescribesRequest;
 use App\Http\Requests\User\CommentRequest;
 use App\Http\Controllers\API\ScrapeController;
 use Goutte\Client;
@@ -113,8 +112,9 @@ class DescribeController extends Controller
      */
     public function edit($id)
     {
-        $describe = $this->describe->find($id);
-        return view('user.describe.edit', compact('describe'));
+        $describes = $this->describe->find($id);
+        // dd($describe);
+        return view('user.describe.edit', compact('describes'));
     }
 
     /**
@@ -124,11 +124,12 @@ class DescribeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(DescribesRequest $request, $id)
+    public function update(Describe1Request $request, $id)
     {
         $inputs = $request->all();
+        // dd($inputs);
         $this->describe->find($id)->fill($inputs)->save();
-        return redirect()->route('describe.index');
+        return redirect()->route('describe.mypage');
     }
 
     /**

@@ -2,13 +2,13 @@
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script>
 <script type="text/javascript">
     $(".navTitle").click(function(){
-          var $subList = $(this).children('ul');
-            if($subList.css('display') == 'none'){
-              $subList.slideDown(500);
-            }else{
-              $subList.slideUp(500);
-            }
-        });
+        var $subList = $(this).children('ul');
+        if($subList.css('display') == 'none'){
+          $subList.slideDown(500);
+        }else{
+          $subList.slideUp(500);
+        }
+    });
 
     $(function(){
         var modal = $('#modal'),

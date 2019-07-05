@@ -1,26 +1,25 @@
 @extends ('layouts.index')
 @section ('content')
 
-<h1 class="brand-header">投稿編集</h1>
-
+<div class="edit-title">
+  <h1 class="brand-header">投稿編集</h1>
+</div>
 <div class="main-wrap">
   <div class="container">
-    {!! Form::open(['route' => 'describe.update', $describe->id, 'method' => 'PUT']) !!}
-      <div class="form-group">
-        <span class="help-block">{{ $errors->first('tag_category_id') }}</span>
-      </div>
-      <div class="form-group">
-        {!! Form::input('text', 'title', $describe->title, ['class' => 'form-control', 'placehoder' => 'Title']) !!}
+    {!! Form::open(['route' => ['describe.update', $describes->id], 'method' => 'PUT']) !!}
+      <div class="form-group {{ $errors->has('title')? 'has-error' : '' }}">
+        {!! Form::input('text', 'title', $describes->title, ['class' => 'form-control']) !!}
         <span class="help-block">{{ $errors->first('title') }}</span>
       </div>
-      <div class="form-group">
-        {!! Form::textarea('content', $describe->content, ['class' => 'form-control', 'placehoder' => 'Post Editing...']) !!}
+      <div class="form-group {{ $errors->has('title')? 'has-error' : '' }}">
+        {!! Form::input('text', 'URL', $describes->url, ['class' => 'form-control']) !!}
+        <span class="help-block">{{ $errors->first('url') }}</span>
+      </div>
+      <div class="form-group {{ $errors->has('content')? 'has-error' : '' }}">
+        {!! Form::textarea('content', $describes->content, ['class' => 'form-control']) !!}
         <span class="help-block">{{ $errors->first('content') }}</span>
       </div>
-      <div class="form-group">
-          {!! Form::input('text', $describe->url, ['class' => 'form-control', 'placehoder' => 'URL']) !!}
-      </div>
-      {!! Form::submit('update', ['name' => 'confirm', 'class'  => 'btn btn-success pull-right'])!!}
+      {!! Form::submit('更新', ['name' => 'update', 'class'  => 'btn btn-success pull-right'])!!}
     {!! Form::close() !!}
   </div>
 </div>
