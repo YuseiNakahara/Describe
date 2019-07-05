@@ -168,7 +168,13 @@ class DescribeController extends Controller
 
     public function mypage()
     {
-        return view(user.describe.mypage);
+        $describes = $this->describe->orderBy('created_at', 'desc')->get();
+        // dd($describes);
+
+        return view('user.describe.mypage',
+                compact(
+                    'describes'
+                ));
     }
 
     public function upload()

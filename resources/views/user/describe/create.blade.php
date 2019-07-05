@@ -6,7 +6,6 @@
     <div class="main-wrap">
       {!! Form::open(['route' => 'describe.confirm', 'method' => 'GET']) !!}
         <div class="form-create">
-          <input type="hidden" name="user_id" value=Auth:id()>
           {!! Form::input('hidden', 'user_id', Auth::id()) !!}
             <div class="form-group @if(!empty($errors->first('title'))) has-error @endif">
               <p class="help-block">
