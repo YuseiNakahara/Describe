@@ -4,6 +4,10 @@
 <body>
   <div class="box">
     <div class="main">
+      <div class="icon-search">
+        <a href="{{ route('describe.index') }}" class="fas fa-search fa-2x"><a>
+        {!! Form::input('text', 'searchword', empty($searchword['keyword']) ? null : $searchword['keyword'], ['class' => 'search-text', 'placeholder' => 'Search words...']) !!}
+      </div>
       <h2 class="brand-header">投稿一覧</h2>
         <div class="container">
           {!! Form::open(['route' => 'describe.index', 'method' => 'GET']) !!}
@@ -50,10 +54,12 @@
                 </div>
               @endforeach
             </article>
+            <div class="paginate">
+              {{ $paginate->links() }}
+            </div>
           {!! Form::close() !!}
         </div>
     </div>
-  </div>
 </body>
 
 @endsection

@@ -9,13 +9,6 @@
       <img src="" class="avatar-img">
       <div class="panel-show">
         {{ $describe->title}}の内容
-        <td class="col-xs-1">
-            {!! Form::open(['route' => ['describe.destroy', $describe->id], 'method' => 'DELETE']) !!}
-            <button class="btn btn-danger" type="submit">
-                <i class="fa fa-trash-o" aria-hidden="true">削除</i>
-            </button>
-            {!! Form::close() !!}
-        </td>
       </div>
       <p class="create-date">{{ $describe->created_at }}</p>
     </div>

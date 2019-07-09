@@ -34,12 +34,22 @@ class DescribeController extends Controller
      */
     public function index(Request $request)
     {
+        $paginate = Describe::orderby('created_at', 'desc')->paginate(10);
         $describes = $this->describe->orderBy('created_at', 'desc')->get();
         // dd($describes);
+        $searchword = $request->input('keyword');
+        $query = Describe::query();
+        if(!empty($keyword))
+        {
+            $query->where('name','like','%'.$searchword.'%')->orWhere('mail','like','%'.$searchword.'%');
+        }
 
         return view('user.describe.index',
                 compact(
-                    'describes'
+                    'describes',
+                    'paginate',
+                    'searchword',
+                    'query'
                 ));
     }
 
@@ -141,7 +151,7 @@ class DescribeController extends Controller
     public function destroy($id)
     {
         $this->describe->find($id)->delete();
-        return redirect()->route('describe.index');
+        return redirect()->route('describe.mypage');
     }
 
     public function confirm(Describe1Request $request)

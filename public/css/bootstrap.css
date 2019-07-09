@@ -138,8 +138,13 @@ hr {
 
 .search-text {
   float: right;
-  margin-left: 375px;
+  margin-right: 10px;
   border-radius: 5px;
+}
+
+.fa-search {
+  float: right;
+  margin-right: 100px;
 }
 
 /* body */
@@ -322,12 +327,12 @@ html {
 /* index */
 .form-main {
   margin: 10px 0 40px 0;
-  padding: 0 0 40px;
+  padding: 0 0 30px;
   border-bottom: 1px solid #C0C0C0;
 }
 
 .form-one {
-  width: 400px;
+  width: 300px;
   margin-left: 300px;
 }
 
@@ -402,7 +407,8 @@ html {
 }
 
 .btn-success {
-  margin-top: 10px;
+  margin-top: 30px;
+  margin-left: 300px;
   background-color: #7b7b7b;
   float: right;
 }
@@ -491,9 +497,10 @@ textarea {
 }
 
 .btn-danger {
+  position: absolute;
+  top: 30px;
+  left: 380px;
   background-color: #7b7b7b;
-  margin: 10px 0;
-  float: right;
 }
 
 .btn-danger:hover {
@@ -663,4 +670,15 @@ ul{
 /* edit */
 .form-control {
   border: 2px solid #ced4da;
+}
+
+.page-item.active .page-link {
+  background: -moz-linear-gradient(left, #7ac4c4, rgb(4, 95, 180));
+  background: -webkit-linear-gradient(left, #59b9b9,rgb(4, 95, 180));
+  background: linear-gradient(to right, #8fe7e7, rgb(10, 101, 185));
+}
+
+.paginate {
+  margin-left: 40%;
+  padding-bottom: 100px;
 }

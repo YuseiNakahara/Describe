@@ -22,15 +22,11 @@
       <header class="header list">
           <div class="navbar navbar-inverse navbar-static-top">
               <div class="navbar-header">
-                  <a
-                    class="navbar-brand"
-                    href="{{ route('describe.index') }}"
-                  >Describe</a>
-                  <a href="" class="fas fa-crow fa-3x"></a>
-              </div>
-                {!! Form::input('text', 'searchword', empty($inputs['searchword']) ? null : $inputs['searchword'], ['class' => 'search-text', 'placeholder' => 'Search words...']) !!}
-              <div class="icon-search">
-                  <a href="" class="fas fa-search fa-2x"><a>
+                <a
+                  class="navbar-brand"
+                  href="{{ route('describe.index') }}"
+                >Describe</a>
+                <a href="" class="fas fa-crow fa-3x"></a>
               </div>
               <ul>
                 {!! Form::open(['route' => 'logout', Auth::id(), 'method' => 'POST']) !!}
