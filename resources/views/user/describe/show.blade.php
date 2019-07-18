@@ -79,7 +79,7 @@
         <span class="help-block"></span>
         <div class="comment-bottom">
             <button type="submit" class="btn btn-success">
-                <i class="far fa-comments"></i>
+              <i class="far fa-comments"></i>
             </button>
         </div>
     {!! Form::close() !!}

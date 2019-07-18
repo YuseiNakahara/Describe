@@ -8,7 +8,7 @@
       <i class="fas fa-user-alt"></i>
       <p class="user">{{ Auth::user()->name }}</p>
         <div class="container">
-          {!! Form::open(['route' => 'describe.index', 'method' => 'GET']) !!}
+          <!-- {!! Form::open(['route' => 'describe.index', 'method' => 'GET']) !!} -->
             <article class="Item_content">
               @foreach ($describes as $describe)
                 <div class="form-main">
@@ -37,7 +37,8 @@
                       <i class="far fa-heart"></i>
                       <span class="pointer">{{ count($describe->hearts) }}</span>
                     </div>
-                    <div class="edit">
+                  </div>
+                  <div class="edit">
                       <a
                       class="btn btn-success"
                       href="{{ route('describe.edit', $describe->id) }}">
@@ -51,11 +52,10 @@
                       {!! Form::close() !!}
                       </td>
                     </div>
-                  </div>
                 </div>
               @endforeach
             </article>
-          {!! Form::close() !!}
+          <!-- {!! Form::close() !!} -->
         </div>
     </div>
   </div>

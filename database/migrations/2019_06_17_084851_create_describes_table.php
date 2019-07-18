@@ -17,6 +17,7 @@ class CreateDescribesTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->nullable();
             $table->string('url');
+            $table->integer('likes_count')->default(0);
             $table->string('image_url');
             $table->string('title');
             $table->string('content');

@@ -12,10 +12,13 @@
       href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
       rel="stylesheet"
     >
+    <!-- <link rel="stylesheet" href="sample.css" type="text/css" media="screen and (max-width:600px)">
+    <link rel="stylesheet" href="sample2.css" type="text/css" media="screen and (max-width:300px)">
+    <link rel="stylesheet" href="sample3.css" type="text/css" media="screen and (max-width:0px)"> -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="modal.js"></script>
-    <link rel="stylesheet" href="modal.css">
+    <!-- <script src="modal.js"></script> -->
+    <!-- <link rel="stylesheet" href="modal.css"> -->
     @include('user.describe._script')
   </head>
   <body>
@@ -29,11 +32,11 @@
                 <a href="" class="fas fa-crow fa-3x"></a>
               </div>
               <ul>
-                {!! Form::open(['route' => 'logout', Auth::id(), 'method' => 'POST']) !!}
+                {!! Form::open(['route' => 'home', Auth::id(), 'method' => 'POST']) !!}
                 {!! Form::input('hidden', 'user_id', Auth::id()) !!}
                   <li class="navTitle"><i class="fas fa-chevron-down fa-2x"></i>
                     <ul class="subList">
-                      <li><a class="logout" href="{{ route('logout') }}">LOGOUT</a></li>
+                      <li><a class="logout" href="{{route('home') }}">LOGOUT</a></li>
                     </ul>
                   </li>
                 {!! Form::close() !!}
@@ -77,6 +80,10 @@
             }else{
               $subList.slideUp(500);
             }
+        });
+
+        $('.likebtn').on('click', function(event){
+          $('.likebtn').css('color', 'red');
         });
       </script>
     </footer>

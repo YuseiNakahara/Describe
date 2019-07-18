@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLikesTable extends Migration
+class CreateLikeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -16,9 +16,8 @@ class CreateLikesTable extends Migration
         Schema::create('likes', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->nullable();
-            $table->integer('like_id');
+            $table->integer('describe_id');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

@@ -5,26 +5,32 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Describe;
 use App\Models\Comment;
+use App\Models\Like;
+use App\Models\User;
 use JD\Cloudder\Facades\Cloudder;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\CommentRequest;
 use App\Http\Controllers\API\ScrapeController;
 use Goutte\Client;
 use App\Http\Requests\User\Describe1Request;
-use Illuminate\Support\Facades\Auth;
+use App\Services\SearchingScope;
+
 
 class DescribeController extends Controller
 {
     protected $describes;
     protected $comments;
+    protected $likes;
 
     public function __construct(
         Describe $describes,
-        Comment $comments
+        Comment $comments,
+        Like $likes
     ){
         $this->middleware('auth')->except(['index']);
         $this->describe = $describes;
         $this->comment = $comments;
+        $this->like = $likes;
     }
 
     /**
@@ -34,22 +40,21 @@ class DescribeController extends Controller
      */
     public function index(Request $request)
     {
+        $inputs = $request->all();
         $paginate = Describe::orderby('created_at', 'desc')->paginate(10);
-        $describes = $this->describe->orderBy('created_at', 'desc')->get();
         // dd($describes);
-        $searchword = $request->input('keyword');
-        $query = Describe::query();
-        if(!empty($keyword))
-        {
-            $query->where('name','like','%'.$searchword.'%')->orWhere('mail','like','%'.$searchword.'%');
+        if (array_key_exists('searchword', $inputs)) {
+            // dd($inputs);
+            $describes = $this->describe->SearchingWord($inputs)->get();
+        } else {
+            $describes = $this->describe->orderby('created_at', 'desc')->get();
         }
 
         return view('user.describe.index',
                 compact(
+                    'inputs',
                     'describes',
-                    'paginate',
-                    'searchword',
-                    'query'
+                    'paginate'
                 ));
     }
 
@@ -72,11 +77,12 @@ class DescribeController extends Controller
     public function store(Request $request)
     {
         $inputs = $request->all();
+
         $client = new Client();
         $crawler = $client->request('GET', $inputs['url']);
         // dd($crawler);
         $contentList = $crawler->filter('meta')->each(function ($node) {
-            if ($node->attr('property') === 'og:image') { //metaタグを取得して、og:imageのものを返す
+            if ($node->attr('property') === 'og:image') { //metaタグを取得して、og:imageがあれば返す
                 return $node->attr('content');
             }
             return null;
@@ -94,8 +100,9 @@ class DescribeController extends Controller
             return redirect()->route('describe.index');
         }
 
-        $notImage = asset('public/image/notimage.jpg', true);
-        $this->describe->createNotImage($inputs, $notImage);
+        $notImage = 'https://nenjudo.ocnk.net/data/nenjudo/product/20180622_9b559e.png';
+        // dd($notImage);
+        $this->describe->createImage($inputs, $notImage);
         return redirect()->route('describe.index');
     }
 
@@ -150,6 +157,7 @@ class DescribeController extends Controller
      */
     public function destroy($id)
     {
+        // dd($id);
         $this->describe->find($id)->delete();
         return redirect()->route('describe.mypage');
     }
@@ -190,7 +198,7 @@ class DescribeController extends Controller
 
     public function upload()
     {
-        Cloudder::upload('https://pbs.twimg.com/media/Dz_OgCHUYAAPWOf.jpg', '');
+        // Cloudder::upload('https://pbs.twimg.com/media/Dz_OgCHUYAAPWOf.jpg', '');
         // dd(Cloudder::getResult());
     }
 
@@ -205,6 +213,24 @@ class DescribeController extends Controller
     public function deletecomment($id)
     {
         $this->comment->find($id)->delete();
+        return redirect()->back();
+    }
+
+    public function like($id)
+    {
+        $describe = $this->describe->find($id);
+        $this->like->create([
+            'describe_id' => $describe->id,
+            'user_id' => $describe->user_id
+        ]);
+
+        if($describe->user()->where('user_id', $describe->user_id)->where('describe_id', $describe->id)->exists()) {
+            $describe->user()->detach();
+            $describe->decrement('likes_count');
+        }else{
+            $describe->user()->attach($describe->user_id);
+            $describe->increment('likes_count');
+        }
         return redirect()->back();
     }
 }

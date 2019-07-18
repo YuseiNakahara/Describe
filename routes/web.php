@@ -11,6 +11,9 @@
 |
 */
 
+
+//User Describe
+Route::get('/describe/like/{describe}', ['as' => 'describe.like', 'uses' => 'DescribeController@like']);
 Route::delete('describe/comment/{id}', ['as' => 'describe.deletecomment', 'uses' => 'DescribeController@deletecomment']);
 Route::get('upload', ['as' => 'describe.upload', 'uses' => 'DescribeController@upload']);
 Route::get('confirm', ['as' => 'describe.confirm', 'uses' => 'DescribeController@confirm']);
@@ -22,6 +25,6 @@ Route::resource('user', 'UserController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
+Route::auth();
 
 Route::post('logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);

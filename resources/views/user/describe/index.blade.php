@@ -4,20 +4,25 @@
 <body>
   <div class="box">
     <div class="main">
-      <div class="icon-search">
-        <a href="{{ route('describe.index') }}" class="fas fa-search fa-2x"><a>
-        {!! Form::input('text', 'searchword', empty($searchword['keyword']) ? null : $searchword['keyword'], ['class' => 'search-text', 'placeholder' => 'Search words...']) !!}
-      </div>
+      {!! Form::open(['route' => 'describe.index', 'method' => 'GET']) !!}
+        <div class="icon-search">
+          <a href="{{ route('describe.index') }}" class="fas fa-search fa-2x"><a>
+          {!! Form::input('text', 'searchword', empty($inputs['searchword']) ? null : $inputs['searchword'], ['class' => 'search-text', 'placeholder' => 'Search words...']) !!}
+        </div>
+      {!! Form::close() !!}
       <h2 class="brand-header">投稿一覧</h2>
         <div class="container">
-          {!! Form::open(['route' => 'describe.index', 'method' => 'GET']) !!}
             <article class="Item_content">
               @foreach ($describes as $describe)
                 <div class="form-main">
                   <img src="" class="avatar-img">
                   <a class="postImage" href="{{ $describe['image_url'] }}">
                     <div class="imgbox">
-                      <img width="100%" height="200" src="{{ $describe['image_url'] }}">
+                      @if($describe['image_url'])
+                        <img width="100%" height="200" src="{{ $describe['image_url'] }}">
+                      @else
+                        <img width="100%" height="200" src="{{ asset('image/notimage.jpg') }}">
+                      @endif
                     </div>
                   </a>
                   <div class="form-one">
@@ -36,8 +41,13 @@
                     <div class="form-group">
                       <i class="far fa-comment-alt"></i>
                       <span class="point-color">{{ count($describe->comments) }}</span>
-                      <i class="far fa-heart"></i>
-                      <span class="pointer">{{ count($describe->hearts) }}</span>
+                      {!! Form::open(['route' => ['describe.like', $describe->id], 'method' => 'GET']) !!}
+                        <input type="hidden" name="describe_id" value="$describe->likes->user_id"></input>
+                        <button class="likebtn">
+                          <i class="far fa-heart"></i>
+                          <span class="pointer">{{ $describe->likes_count }}</span>
+                        </button>
+                      {!! Form::close() !!}
                     </div>
                     <div class="user-name">
                       <i class="fas fa-user-alt"></i>
@@ -57,7 +67,6 @@
             <div class="paginate">
               {{ $paginate->links() }}
             </div>
-          {!! Form::close() !!}
         </div>
     </div>
 </body>

@@ -20,11 +20,6 @@
                 <td class='td-text'>{{ $inputs['content'] }}</td>
             </tr>
             <tr>
-                <th class="table-column">Image</th>
-                <td class="td-text">
-                    <img src="{{ $describeImage }}">
-                </td>
-            <tr>
                 <th class="table-column">URL</th>
                 <td class='td-text'>{{ $inputs['url'] }}</td>
             </tr>
