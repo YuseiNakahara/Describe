@@ -45,7 +45,7 @@
                         {!!Form::input('hidden', 'describe_id', $describe->id)!!}
                         <button class="likebtn">
                           <i class="far fa-heart"></i>
-                          <span class="pointer">{{ $describe->likes()->where('describe_id', $describe->id)->count() }}</span>
+                          <span class="pointer">{{ $describe->likes->count() }}</span>
                         </button>
                       {!! Form::close() !!}
                     </div>
