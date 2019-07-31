@@ -56,12 +56,11 @@ class Describe extends Model
         return $this->hasMany(Like::class);
     }
 
-    public function searchingWord($inputs)
+    public function word($describes)
     {
-        return Describe::where('title', 'like', "%タイトル%")
-                        ->where('title', $inputs['searchword'])
-                        ->orderby('created_at', 'desc')
-                        ->get();
+        if(!empty($describes['search_word'])) {
+            return $this->where('title', 'like', '%'.$describes['search_word'].'%');
+        }
     }
 
     public function createImage($inputs, $imageUrl)

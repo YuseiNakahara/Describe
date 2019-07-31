@@ -6,15 +6,11 @@ use Illuminate\Http\Request;
 use App\Models\Describe;
 use App\Models\Comment;
 use App\Models\Like;
-use App\Models\User;
-use JD\Cloudder\Facades\Cloudder;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\CommentRequest;
-use App\Http\Controllers\API\ScrapeController;
 use Goutte\Client;
 use App\Http\Requests\User\Describe1Request;
-use App\Services\SearchingScope;
-
+use Illuminate\Support\Facades\Auth;
 
 class DescribeController extends Controller
 {
@@ -41,6 +37,7 @@ class DescribeController extends Controller
     public function index(Request $request)
     {
         $inputs = $request->all();
+
         $paginate = Describe::orderby('created_at', 'desc')->paginate(10);
         // dd($describes);
         if (array_key_exists('searchword', $inputs)) {
@@ -218,19 +215,34 @@ class DescribeController extends Controller
 
     public function like($id)
     {
-        $describe = $this->describe->find($id);
-        $this->like->create([
-            'describe_id' => $describe->id,
-            'user_id' => $describe->user_id
-        ]);
+        $describeId = $this->describe->find($id)->id; //Describeオブジェクトの中のIDだけを取得している
+        // dd($describeId);
+        $userId = Auth::id();
 
-        if($describe->user()->where('user_id', $describe->user_id)->where('describe_id', $describe->id)->exists()) {
-            $describe->user()->detach();
-            $describe->decrement('likes_count');
-        }else{
-            $describe->user()->attach($describe->user_id);
-            $describe->increment('likes_count');
+        $like = $this->like->userLike($userId, $describeId)->first(); //Likeモデルの中のUserIdとDescribeIdが一致するものをfiirstで１レコードのみ取得
+
+        if ($like) { //likeテーブルにlikedataがあった場合
+            $like->delete();
+        } else {
+            $this->like->create([ //そうでなかった場合に、describe_idとuser_idを作成し、保存
+                'describe_id' => $describeId,
+                'user_id' => $userId,
+            ]);
         }
+
         return redirect()->back();
+    }
+
+    public function search()
+    {
+        // 検索するテキスト取得
+        $search = Request::get('s');
+        $query = Describe::query();
+        // 検索するテキストが入力されている場合のみ
+        if(!empty($search)) {
+            $query->where('title', 'like', '%'.$search.'%');
+        }
+        $data = $query->get();
+        return view('user.describe.index', compact('data', 'search'));
     }
 }

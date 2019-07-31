@@ -4,12 +4,10 @@
 <body>
   <div class="box">
     <div class="main">
-      <!-- {!! Form::open(['route' => 'describe.index', 'method' => 'GET']) !!}
-        <div class="icon-search">
-          <a href="{{ route('describe.index') }}" class="fas fa-search fa-2x"><a>
-          {!! Form::input('text', 'searchword', empty($inputs['searchword']) ? null : $inputs['searchword'], ['class' => 'search-text', 'placeholder' => 'Search words...']) !!}
-        </div>
-      {!! Form::close() !!} -->
+    {!! Form::open(['route' => 'describe.search', 'method' => 'GET']) !!}
+      {!! Form::text('s', null) !!}
+      {!! Form::submit('検索') !!}
+    {!! Form::close() !!}
       <h2 class="brand-header">投稿一覧</h2>
         <div class="container">
             <article class="Item_content">

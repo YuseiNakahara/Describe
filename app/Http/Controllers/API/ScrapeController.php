@@ -4,7 +4,6 @@ namespace App\Http\Controllers\API;
 
 use Goutte\Client;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\DescribeController;
 use Illuminate\Http\Request;
 
 class ScrapeController extends Controller

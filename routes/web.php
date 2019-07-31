@@ -13,7 +13,9 @@
 
 
 //User Describe
+Route::get('/describe/search', ['as' => 'describe.search', 'uses' => 'DescribeController@search']);
 Route::get('/describe/like/{describe}', ['as' => 'describe.like', 'uses' => 'DescribeController@like']);
+Route::get('/describe/dontlike/{describe}', ['as' => 'describe.dontlike', 'uses' => 'DescribeController@dontlike']);
 Route::delete('describe/comment/{id}', ['as' => 'describe.deletecomment', 'uses' => 'DescribeController@deletecomment']);
 Route::get('upload', ['as' => 'describe.upload', 'uses' => 'DescribeController@upload']);
 Route::get('confirm', ['as' => 'describe.confirm', 'uses' => 'DescribeController@confirm']);

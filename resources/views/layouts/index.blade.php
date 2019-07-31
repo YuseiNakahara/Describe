@@ -12,13 +12,8 @@
       href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
       rel="stylesheet"
     >
-    <!-- <link rel="stylesheet" href="sample.css" type="text/css" media="screen and (max-width:600px)">
-    <link rel="stylesheet" href="sample2.css" type="text/css" media="screen and (max-width:300px)">
-    <link rel="stylesheet" href="sample3.css" type="text/css" media="screen and (max-width:0px)"> -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- <script src="modal.js"></script> -->
-    <!-- <link rel="stylesheet" href="modal.css"> -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
     @include('user.describe._script')
   </head>
   <body>
